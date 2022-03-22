@@ -1,0 +1,10 @@
+spring:
+  liquibase:
+    change-log: classpath:/db/changelog/master.xml
+  datasource:
+    username: username
+    password: password
+    url: jdbc:h2:mem:test
+  jpa:
+    hibernate:
+      ddl-auto: validate

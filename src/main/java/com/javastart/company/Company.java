@@ -1,4 +1,4 @@
-package com.javastart;
+package com.javastart.company;
 
 import com.javastart.job_offer.JobOffer;
 

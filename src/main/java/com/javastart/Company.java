@@ -1,5 +1,7 @@
 package com.javastart;
 
+import com.javastart.job_offer.JobOffer;
+
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;

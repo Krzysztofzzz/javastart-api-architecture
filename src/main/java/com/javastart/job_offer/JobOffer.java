@@ -1,4 +1,6 @@
-package com.javastart;
+package com.javastart.job_offer;
+
+import com.javastart.Company;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;

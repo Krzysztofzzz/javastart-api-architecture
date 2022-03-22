@@ -1,6 +1,6 @@
 package com.javastart.company;
 
-public class CompanyJobOfferDto {
+class CompanyJobOfferDto {
     private Long id;
     private String title;
     private Double minSalary;

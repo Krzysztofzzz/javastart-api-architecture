@@ -5,7 +5,7 @@ import org.springframework.stereotype.Service;
 import java.util.Optional;
 
 @Service
-public class JobOfferService {
+class JobOfferService {
     private final JobOfferRepository jobOfferRepository;
     private final JobOfferDtoMapper jobOfferDtoMapper;
 

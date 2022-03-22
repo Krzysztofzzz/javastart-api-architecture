@@ -18,4 +18,6 @@ class JobOfferService {
         return jobOfferRepository.findById(id)
                 .map(jobOfferDtoMapper::map);
     }
+
+    
 }

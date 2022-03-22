@@ -1,7 +1,5 @@
 package com.javastart.job_offer;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonProperty;
 import com.javastart.Company;
 
 import javax.persistence.*;
@@ -24,7 +22,6 @@ public class JobOffer {
     @ManyToOne(optional = false)
     @JoinColumn(name = "company_id")
     private Company company;
-
 
 
     public Long getId() {

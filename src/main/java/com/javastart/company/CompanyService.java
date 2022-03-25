@@ -1,7 +1,9 @@
 package com.javastart.company;
 
+import com.javastart.job_offer.JobOffer;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
@@ -24,11 +26,25 @@ class CompanyService {
     }
 
     List<CompanyJobOfferDto> getJobOffersByCompanyId(Long companyId) {
-        return companyRepository.findById(companyId)
+        Optional<Company> company = companyRepository.findById(companyId);
+        if (company.isPresent()) {
+            List<JobOffer> jobOffers = company.get().getJobOffers();
+            if (jobOffers != null) {
+                List<CompanyJobOfferDto> companyJobOfferDtoList = new ArrayList<>();
+                for (JobOffer jobOffer : jobOffers) {
+                    CompanyJobOfferDto companyJobOfferDto = companyJobOfferDtoMapper.map(jobOffer);
+                    companyJobOfferDtoList.add(companyJobOfferDto);
+                }
+                return companyJobOfferDtoList;
+            }
+        }
+        return Collections.emptyList();
+
+/*        return companyRepository.findById(companyId)
                 .map(Company::getJobOffers)
                 .orElse(Collections.emptyList())
                 .stream()
                 .map(companyJobOfferDtoMapper::map)
-                .toList();
+                .toList();*/
     }
 }

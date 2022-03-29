@@ -2,6 +2,7 @@ package com.javastart.job_offer;
 
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.Optional;
 
 @Service
@@ -19,5 +20,12 @@ class JobOfferService {
                 .map(jobOfferDtoMapper::map);
     }
 
-    
+    JobOfferDto saveOffer(JobOfferDto jobOfferDto) {
+        JobOffer jobOfferToSave = jobOfferDtoMapper.map(jobOfferDto);
+        jobOfferToSave.setDateAdded(LocalDateTime.now());
+        JobOffer savedJobOffer = jobOfferRepository.save(jobOfferToSave);
+        return jobOfferDtoMapper.map(savedJobOffer);
+    }
+
+
 }

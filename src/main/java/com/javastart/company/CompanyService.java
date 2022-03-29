@@ -26,7 +26,7 @@ class CompanyService {
     }
 
     List<CompanyJobOfferDto> getJobOffersByCompanyId(Long companyId) {
-        Optional<Company> company = companyRepository.findById(companyId);
+/*        Optional<Company> company = companyRepository.findById(companyId);
         if (company.isPresent()) {
             List<JobOffer> jobOffers = company.get().getJobOffers();
             if (jobOffers != null) {
@@ -38,13 +38,19 @@ class CompanyService {
                 return companyJobOfferDtoList;
             }
         }
-        return Collections.emptyList();
+        return Collections.emptyList();*/
 
-/*        return companyRepository.findById(companyId)
+        return companyRepository.findById(companyId)
                 .map(Company::getJobOffers)
                 .orElse(Collections.emptyList())
                 .stream()
                 .map(companyJobOfferDtoMapper::map)
-                .toList();*/
+                .toList();
+    }
+
+    CompanyDto saveCompany(CompanyDto companyDto){
+        Company company = companyDtoMapper.map(companyDto);
+        Company savedCompany = companyRepository.save(company);
+        return companyDtoMapper.map(savedCompany);
     }
 }

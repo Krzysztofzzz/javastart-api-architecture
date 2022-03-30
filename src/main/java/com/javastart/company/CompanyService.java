@@ -1,9 +1,7 @@
 package com.javastart.company;
 
-import com.javastart.job_offer.JobOffer;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
@@ -48,9 +46,19 @@ class CompanyService {
                 .toList();
     }
 
-    CompanyDto saveCompany(CompanyDto companyDto){
+    CompanyDto saveCompany(CompanyDto companyDto) {
         Company company = companyDtoMapper.map(companyDto);
         Company savedCompany = companyRepository.save(company);
         return companyDtoMapper.map(savedCompany);
+    }
+
+    Optional<CompanyDto> replaceCompany(Long companyId, CompanyDto companyDto) {
+        if (!companyRepository.existsById(companyId)) {
+            return Optional.empty();
+        }
+        companyDto.setId(companyId);
+        Company companyToUpdate = companyDtoMapper.map(companyDto);
+        Company updatedEntity = companyRepository.save(companyToUpdate);
+        return Optional.of(companyDtoMapper.map(updatedEntity));
     }
 }

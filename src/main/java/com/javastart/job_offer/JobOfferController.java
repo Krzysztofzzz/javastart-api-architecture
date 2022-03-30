@@ -31,4 +31,11 @@ class JobOfferController {
                 .toUri();
         return ResponseEntity.created(savedJobOfferUri).body(savedJobOffer);
     }
+
+    @PatchMapping("/{id}")
+    ResponseEntity<?> updateJobOffer(@PathVariable Long id, @RequestBody JobOfferDto jobOffer) {
+        return jobOfferService.updateOffer(id, jobOffer)
+                .map(offer -> ResponseEntity.noContent().build())
+                .orElse(ResponseEntity.notFound().build());
+    }
 }

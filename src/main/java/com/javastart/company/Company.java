@@ -17,7 +17,7 @@ public class Company {
     private Integer employees;
     private String telephone;
     private String email;
-    @OneToMany(mappedBy = "company")
+    @OneToMany(mappedBy = "company", cascade = CascadeType.REMOVE)
     private List<JobOffer> jobOffers = new ArrayList<>();
 
     public Long getId() {

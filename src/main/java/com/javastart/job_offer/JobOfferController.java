@@ -38,4 +38,10 @@ class JobOfferController {
                 .map(offer -> ResponseEntity.noContent().build())
                 .orElse(ResponseEntity.notFound().build());
     }
+
+    @DeleteMapping("/{id}")
+    ResponseEntity<?> deleteJobOffer(@PathVariable Long id) {
+        jobOfferService.deleteOffer(id);
+        return ResponseEntity.noContent().build();
+    }
 }

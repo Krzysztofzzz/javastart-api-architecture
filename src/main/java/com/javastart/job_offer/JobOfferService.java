@@ -35,6 +35,10 @@ class JobOfferService {
                 .map(jobOfferDtoMapper::map);
     }
 
+    public void deleteOffer(Long id) {
+        jobOfferRepository.deleteById(id);
+    }
+
     private JobOffer setEntityFields(JobOfferDto source, JobOffer target) {
         if (source.getTitle() != null) {
             target.setTitle(source.getTitle());
@@ -59,4 +63,6 @@ class JobOfferService {
         }
         return target;
     }
+
+
 }
